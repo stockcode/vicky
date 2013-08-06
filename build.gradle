@@ -1,0 +1,44 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:0.5.+'
+  }
+}
+
+apply plugin: 'android'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.6'
+}
+
+  repositories {
+    mavenCentral()
+	mavenLocal()
+  }
+
+dependencies {
+    compile 'com.google.android:support-v4:r7'
+    compile 'jcifs:jcifs:1.3.17'
+}
+
+
+tasks.withType(Compile) { compileTask -> compileTask.dependsOn copyNativeLibs }
+tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->pkgTask.jniDir new File(buildDir, 'native-libs')}
+
+    task copyNativeLibs(type: Copy) {
+        println 'call copyNativeLibs'
+        from fileTree(dir: 'libs', include: '**/*.so' )
+        into 'build/native-libs'
+    }
+
+
+android {
+    defaultConfig {
+    compileSdkVersion 16
+    buildToolsVersion "17.0.0"
+    }
+}
+

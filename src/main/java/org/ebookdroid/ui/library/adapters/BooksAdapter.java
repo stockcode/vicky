@@ -45,7 +45,7 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
 
     public static final int RECENT_INDEX = 0;
 
-    public static final int SEARCH_INDEX = 1;
+    public static final int SEARCH_INDEX = 10;
 
     private final static AtomicInteger SEQ = new AtomicInteger(SERVICE_SHELVES);
 

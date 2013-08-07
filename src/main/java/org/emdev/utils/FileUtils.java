@@ -166,14 +166,10 @@ public final class FileUtils {
     }
 
     public static File getAudioFile(String file) {
-        File path = new File(file).getParentFile();
+        String path = file.substring(0, file.lastIndexOf("."));
+        String name = file.substring(file.lastIndexOf("/") + 1, file.length()).replaceAll("pdf", "mp3");
 
-        for (File audioFile : path.listFiles()) {
-            if (audioFile.getName().endsWith("mp3") || audioFile.getName().endsWith("wav")) {
-                return audioFile;
-            }
-        }
-        return null;
+        return new File(path + "/" + name);
     }
 
     public static int move(final File sourceDir, final File targetDir, final String[] fileNames,

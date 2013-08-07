@@ -89,7 +89,7 @@ public class BookshelfView extends GridView implements OnItemClickListener {
         }
         LayoutUtils.fillInParent(shelves, this);
         final Resources r = getResources();
-        final float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 160, r.getDisplayMetrics());
+        final float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 247, r.getDisplayMetrics());
         setColumnWidth((int) px);
 
         init(base.getContext());

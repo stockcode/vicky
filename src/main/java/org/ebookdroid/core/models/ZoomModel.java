@@ -27,27 +27,27 @@ public class ZoomModel extends ListenerProxy {
     }
 
     public void setZoom(final float zoom) {
-        setZoom(zoom, false);
-        final float newZoom = adjust(zoom);
-        final float oldZoom = this.currentZoom;
-        if (newZoom != oldZoom) {
-            isCommited = false;
-            this.currentZoom = newZoom;
-            this.<ZoomListener> getListener().zoomChanged(oldZoom, newZoom, false);
-        }
+//        setZoom(zoom, false);
+//        final float newZoom = adjust(zoom);
+//        final float oldZoom = this.currentZoom;
+//        if (newZoom != oldZoom) {
+//            isCommited = false;
+//            this.currentZoom = newZoom;
+//            this.<ZoomListener> getListener().zoomChanged(oldZoom, newZoom, false);
+//        }
     }
 
     public void setZoom(final float zoom, final boolean commitImmediately) {
-        final float newZoom = adjust(zoom);
-        final float oldZoom = this.currentZoom;
-        if (newZoom != oldZoom || commitImmediately) {
-            isCommited = commitImmediately;
-            this.currentZoom = newZoom;
-            this.<ZoomListener> getListener().zoomChanged(oldZoom, newZoom, commitImmediately);
-            if (commitImmediately) {
-                this.initialZoom = this.currentZoom;
-            }
-        }
+//        final float newZoom = adjust(zoom);
+//        final float oldZoom = this.currentZoom;
+//        if (newZoom != oldZoom || commitImmediately) {
+//            isCommited = commitImmediately;
+//            this.currentZoom = newZoom;
+//            this.<ZoomListener> getListener().zoomChanged(oldZoom, newZoom, commitImmediately);
+//            if (commitImmediately) {
+//                this.initialZoom = this.currentZoom;
+//            }
+//        }
     }
 
     public void scaleZoom(final float factor) {
@@ -59,7 +59,7 @@ public class ZoomModel extends ListenerProxy {
     }
 
     public float getZoom() {
-        return currentZoom;
+        return MIN_ZOOM;
     }
 
     public void commit() {

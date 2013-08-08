@@ -92,6 +92,11 @@ public abstract class AbstractPageAnimator extends SinglePageView implements Pag
         if (pageCount == 0) {
             return viewState;
         }
+
+        if (viewState.pages.currentIndex == pageCount - 1) {
+            return viewState;
+        }
+
         foreIndex = viewState.pages.currentIndex % pageCount;
         backIndex = (foreIndex + 1) % pageCount;
 
@@ -110,6 +115,10 @@ public abstract class AbstractPageAnimator extends SinglePageView implements Pag
 
         final int pageCount = viewState.model.getPageCount();
         if (pageCount == 0) {
+            return viewState;
+        }
+
+        if (viewState.pages.currentIndex == 0) {
             return viewState;
         }
 

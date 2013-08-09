@@ -29,8 +29,6 @@
         <item>actions_toggleTouchManagerView</item>
         <item>actions_keyBindings</item>
 
-        <item>actions_verticalConfigScrollUp</item>
-        <item>actions_verticalConfigScrollDown</item>
         <item>actions_leftTopCorner</item>
         <item>actions_rightTopCorner</item>
         <item>actions_leftBottomCorner</item>
@@ -69,8 +67,6 @@
         <item>@string/menu_tap_configuration</item>
         <item>@string/menu_key_bindings</item>
 
-        <item>@string/actions_verticalConfigScrollUp</item>
-        <item>@string/actions_verticalConfigScrollDown</item>
         <item>@string/actions_leftTopCorner</item>
         <item>@string/actions_rightTopCorner</item>
         <item>@string/actions_leftBottomCorner</item>

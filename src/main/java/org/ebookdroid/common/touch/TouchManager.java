@@ -63,14 +63,14 @@ public class TouchManager {
                 final Region r = def.addRegion(80, 0, 100, 20);
                 r.setAction(Touch.DoubleTap, R.id.mainmenu_close, true);
             }
-            {
-                final Region r = def.addRegion(0, 0, 100, 10);
-                r.setAction(Touch.SingleTap, R.id.actions_verticalConfigScrollUp, true);
-            }
-            {
-                final Region r = def.addRegion(0, 90, 100, 100);
-                r.setAction(Touch.SingleTap, R.id.actions_verticalConfigScrollDown, true);
-            }
+//            {
+//                final Region r = def.addRegion(0, 0, 100, 10);
+//                r.setAction(Touch.SingleTap, R.id.actions_verticalConfigScrollUp, true);
+//            }
+//            {
+//                final Region r = def.addRegion(0, 90, 100, 100);
+//                r.setAction(Touch.SingleTap, R.id.actions_verticalConfigScrollDown, true);
+//            }
 
             persist();
         }

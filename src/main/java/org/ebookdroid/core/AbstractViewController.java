@@ -87,8 +87,8 @@ public abstract class AbstractViewController extends AbstractComponentController
 
         this.pageToGo = base.getBookSettings().getCurrentPage();
 
-        createAction(R.id.actions_verticalConfigScrollUp, new Constant("direction", -1));
-        createAction(R.id.actions_verticalConfigScrollDown, new Constant("direction", +1));
+        //createAction(R.id.actions_verticalConfigScrollUp, new Constant("direction", -1));
+        //createAction(R.id.actions_verticalConfigScrollDown, new Constant("direction", +1));
         createAction(R.id.actions_leftTopCorner, new Constant("offsetX", 0), new Constant("offsetY", 0));
         createAction(R.id.actions_leftBottomCorner, new Constant("offsetX", 0), new Constant("offsetY", 1));
         createAction(R.id.actions_rightTopCorner, new Constant("offsetX", 1), new Constant("offsetY", 0));
@@ -505,11 +505,11 @@ public abstract class AbstractViewController extends AbstractComponentController
         getView().redrawView(viewState);
     }
 
-    @ActionMethod(ids = { R.id.actions_verticalConfigScrollUp, R.id.actions_verticalConfigScrollDown })
-    public final void verticalConfigScroll(final ActionEx action) {
-        final Integer direction = action.getParameter("direction");
-        verticalConfigScroll(direction);
-    }
+//    @ActionMethod(ids = { R.id.actions_verticalConfigScrollUp, R.id.actions_verticalConfigScrollDown })
+//    public final void verticalConfigScroll(final ActionEx action) {
+//        final Integer direction = action.getParameter("direction");
+//        verticalConfigScroll(direction);
+//    }
 
     protected final boolean processTap(final TouchManager.Touch type, final MotionEvent e) {
         final float x = e.getX();

@@ -39,8 +39,8 @@ public class KeyBindingsManager {
         }
 
         if (!fromJSON) {
-            addAction(R.id.actions_verticalConfigScrollUp, KeyEvent.KEYCODE_DPAD_UP, KeyEvent.KEYCODE_VOLUME_UP);
-            addAction(R.id.actions_verticalConfigScrollDown, KeyEvent.KEYCODE_DPAD_DOWN, KeyEvent.KEYCODE_VOLUME_DOWN);
+//            addAction(R.id.actions_verticalConfigScrollUp, KeyEvent.KEYCODE_DPAD_UP, KeyEvent.KEYCODE_VOLUME_UP);
+//            addAction(R.id.actions_verticalConfigScrollDown, KeyEvent.KEYCODE_DPAD_DOWN, KeyEvent.KEYCODE_VOLUME_DOWN);
 
             persist();
         }

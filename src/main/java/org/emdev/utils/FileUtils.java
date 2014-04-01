@@ -1,5 +1,7 @@
 package org.emdev.utils;
 
+import org.emdev.ui.progress.IProgressIndicator;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -13,8 +15,6 @@ import java.nio.channels.WritableByteChannel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
-
-import org.emdev.ui.progress.IProgressIndicator;
 
 public final class FileUtils {
 
@@ -110,6 +110,18 @@ public final class FileUtils {
         return name.substring(index);
     }
 
+    public static final String getExtension(final File file) {
+        if (file == null) {
+            return "";
+        }
+        final String name = file.getName();
+        final int index = name.lastIndexOf(".");
+        if (index == -1) {
+            return "";
+        }
+        return name.substring(index + 1);
+    }
+
     public static final FilePath parseFilePath(final String path, final Collection<String> extensions) {
         final File file = new File(path);
         final FilePath result = new FilePath();
@@ -170,6 +182,15 @@ public final class FileUtils {
         String name = file.substring(file.lastIndexOf("/") + 1, file.length()).replaceAll("pdf", "mp3");
 
         return new File(path + "/" + name);
+    }
+
+    public static File getVideoFile(String file) {
+        String path = file.substring(0, file.lastIndexOf("."));
+        File dir = new File(path+"/video");
+        File[] files = dir.listFiles();
+
+        if (files.length > 0) return files[0];
+        else return null;
     }
 
     public static int move(final File sourceDir, final File targetDir, final String[] fileNames,

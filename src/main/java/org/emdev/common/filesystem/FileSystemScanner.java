@@ -1,13 +1,17 @@
 package org.emdev.common.filesystem;
 
-import static android.os.FileObserver.CLOSE_WRITE;
-import static android.os.FileObserver.CREATE;
-import static android.os.FileObserver.DELETE;
-import static android.os.FileObserver.MOVED_FROM;
-import static android.os.FileObserver.MOVED_TO;
-
 import android.app.Activity;
 import android.os.FileObserver;
+
+import org.emdev.common.cache.CacheManager;
+import org.emdev.common.log.LogContext;
+import org.emdev.common.log.LogManager;
+import org.emdev.ui.actions.EventDispatcher;
+import org.emdev.ui.actions.InvokationType;
+import org.emdev.ui.tasks.AsyncTask;
+import org.emdev.utils.FileUtils;
+import org.emdev.utils.LengthUtils;
+import org.emdev.utils.StringUtils;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -21,15 +25,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.emdev.common.cache.CacheManager;
-import org.emdev.common.log.LogContext;
-import org.emdev.common.log.LogManager;
-import org.emdev.ui.actions.EventDispatcher;
-import org.emdev.ui.actions.InvokationType;
-import org.emdev.ui.tasks.AsyncTask;
-import org.emdev.utils.FileUtils;
-import org.emdev.utils.LengthUtils;
-import org.emdev.utils.StringUtils;
+import static android.os.FileObserver.CLOSE_WRITE;
+import static android.os.FileObserver.CREATE;
+import static android.os.FileObserver.DELETE;
+import static android.os.FileObserver.MOVED_FROM;
+import static android.os.FileObserver.MOVED_TO;
 
 public class FileSystemScanner {
 
@@ -212,6 +212,10 @@ public class FileSystemScanner {
             }
 
             if (dir == null || !dir.isDirectory()) {
+                return;
+            }
+
+            if (dir.getPath().contains("_")) {
                 return;
             }
 

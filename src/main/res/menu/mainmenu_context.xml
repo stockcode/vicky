@@ -11,6 +11,10 @@
                     android:icon="@drawable/viewer_menu_outline"
                     android:title="播放音频"/>
             <item
+                    android:id="@+id/mainmenu_playvideo"
+                    android:icon="@drawable/viewer_menu_outline"
+                    android:title="播放视频"/>
+            <item
                 android:id="@+id/mainmenu_outline"
                 android:icon="@drawable/viewer_menu_outline"
                 android:title="@string/menu_outline"/>
@@ -107,9 +111,9 @@
         </menu>
     </item>
     <item
-        android:id="@+id/mainmenu_about"
+        android:id="@+id/mainmenu_playvideo"
         android:icon="@drawable/common_actionbar_about"
-        android:title="@string/menu_about"/>
+        android:title="播放视频"/>
     <item
         android:id="@+id/mainmenu_close"
         android:icon="@drawable/common_actionbar_close"

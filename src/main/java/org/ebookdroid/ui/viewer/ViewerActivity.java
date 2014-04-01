@@ -1,23 +1,6 @@
 package org.ebookdroid.ui.viewer;
 
-import org.ebookdroid.R;
-import org.ebookdroid.common.settings.AppSettings;
-import org.ebookdroid.common.settings.books.BookSettings;
-import org.ebookdroid.common.settings.books.Bookmark;
-import org.ebookdroid.common.settings.types.BookRotationType;
-import org.ebookdroid.common.settings.types.ToastPosition;
-import org.ebookdroid.common.touch.TouchManagerView;
-import org.ebookdroid.core.DecodeService;
-import org.ebookdroid.core.codec.CodecFeatures;
-import org.ebookdroid.ui.viewer.stubs.ViewStub;
-import org.ebookdroid.ui.viewer.viewers.GLView;
-import org.ebookdroid.ui.viewer.views.ManualCropView;
-import org.ebookdroid.ui.viewer.views.PageViewZoomControls;
-import org.ebookdroid.ui.viewer.views.SearchControls;
-
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.ContextMenu;
@@ -32,6 +15,20 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import org.ebookdroid.R;
+import org.ebookdroid.common.settings.AppSettings;
+import org.ebookdroid.common.settings.books.BookSettings;
+import org.ebookdroid.common.settings.books.Bookmark;
+import org.ebookdroid.common.settings.types.BookRotationType;
+import org.ebookdroid.common.settings.types.ToastPosition;
+import org.ebookdroid.common.touch.TouchManagerView;
+import org.ebookdroid.core.DecodeService;
+import org.ebookdroid.core.codec.CodecFeatures;
+import org.ebookdroid.ui.viewer.stubs.ViewStub;
+import org.ebookdroid.ui.viewer.viewers.GLView;
+import org.ebookdroid.ui.viewer.views.ManualCropView;
+import org.ebookdroid.ui.viewer.views.PageViewZoomControls;
+import org.ebookdroid.ui.viewer.views.SearchControls;
 import org.emdev.common.android.AndroidVersion;
 import org.emdev.ui.AbstractActionActivity;
 import org.emdev.ui.actions.ActionDialogBuilder;
@@ -311,9 +308,8 @@ public class ViewerActivity extends AbstractActionActivity<ViewerActivity, Viewe
     protected void updateMenuItems(final Menu menu) {
         final AppSettings as = AppSettings.current();
 
-        if (getController().audioFile == null) {
-            ActionMenuHelper.setMenuItemVisible(menu, false, R.id.mainmenu_playaudio);
-        }
+
+        ActionMenuHelper.setMenuItemVisible(menu, true, R.id.mainmenu_playvideo);
 
         ActionMenuHelper.setMenuItemChecked(menu, as.fullScreen, R.id.mainmenu_fullscreen);
 

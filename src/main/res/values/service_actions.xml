@@ -6,6 +6,8 @@
 
         <item>actions_openOptionsMenu</item>
 
+        <item>mainmenu_playaudio</item>
+        <item>mainmenu_playvideo</item>
         <item>mainmenu_outline</item>
         <item>mainmenu_search</item>
         <item>mainmenu_bookmark</item>

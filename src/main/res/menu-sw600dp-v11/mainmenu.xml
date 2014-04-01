@@ -113,7 +113,7 @@
         </menu>
     </item>
     <item
-        android:id="@+id/mainmenu_about"
+        android:id="@+id/mainmenu_playvideo"
         android:icon="@drawable/common_actionbar_about"
         android:showAsAction="always"
         android:title="@string/menu_about"/>

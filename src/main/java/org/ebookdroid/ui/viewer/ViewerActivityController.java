@@ -1,5 +1,23 @@
 package org.ebookdroid.ui.viewer;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.graphics.PointF;
+import android.graphics.RectF;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputType;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.widget.EditText;
+import android.widget.Toast;
+
 import org.ebookdroid.CodecType;
 import org.ebookdroid.EBookDroidApp;
 import org.ebookdroid.R;
@@ -40,38 +58,6 @@ import org.ebookdroid.ui.viewer.stubs.ViewContollerStub;
 import org.ebookdroid.ui.viewer.views.ManualCropView;
 import org.ebookdroid.ui.viewer.views.SearchControls;
 import org.ebookdroid.ui.viewer.views.ViewEffects;
-
-import android.app.ProgressDialog;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.graphics.PointF;
-import android.graphics.RectF;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.text.Editable;
-import android.text.InputType;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-
 import org.emdev.BaseDroidApp;
 import org.emdev.common.android.AndroidVersion;
 import org.emdev.common.backup.BackupManager;
@@ -81,7 +67,6 @@ import org.emdev.common.log.LogManager;
 import org.emdev.ui.AbstractActivityController;
 import org.emdev.ui.actions.ActionDialogBuilder;
 import org.emdev.ui.actions.ActionEx;
-import org.emdev.ui.actions.ActionMenuHelper;
 import org.emdev.ui.actions.ActionMethod;
 import org.emdev.ui.actions.IActionController;
 import org.emdev.ui.actions.params.EditableValue;
@@ -94,6 +79,15 @@ import org.emdev.ui.uimanager.IUIManager;
 import org.emdev.utils.FileUtils;
 import org.emdev.utils.LengthUtils;
 import org.emdev.utils.StringUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class ViewerActivityController extends AbstractActivityController<ViewerActivity> implements
         IActivityController, DecodingProgressListener, CurrentPageListener, IAppSettingsChangeListener,
@@ -478,6 +472,23 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
 //        Intent it = new Intent(Intent.ACTION_VIEW);
 //        it.setDataAndType(uri, "audio/mp3");
 //        getManagedComponent().startActivity(it);
+    }
+
+    @ActionMethod(ids = R.id.mainmenu_playvideo)
+    public void playVideo(final ActionEx action) {
+
+
+        File videoFile = FileUtils.getVideoFile(m_fileName);
+
+        if (videoFile != null) {
+
+            if (player != null && player.isPlaying())
+                player.stop();
+
+        Intent it = new Intent(Intent.ACTION_VIEW);
+        it.setDataAndType(Uri.fromFile(videoFile), "video/" + FileUtils.getExtension(videoFile));
+        getManagedComponent().startActivity(it);
+        }
     }
 
     @ActionMethod(ids = R.id.actions_gotoOutlineItem)
